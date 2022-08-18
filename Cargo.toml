@@ -12,7 +12,7 @@ clap = "3.2.17"
 collect_slice = "1.2.0"
 demod_fm = {version = "1.0.1", git = "https://github.com/Dygear/demod_fm.rs"}
 env_logger = "0.9.0"
-fnv = "1.0.5"
+fnv = "1.0.7"
 libc = "0.2.8"
 log = "0.4.1"
 mio = "0.6.12"
