@@ -23,6 +23,7 @@ impl<W: Write> ReplayReceiver<W> {
 
     pub fn replay<R: Read>(&mut self, stream: &mut R) {
         let mut buf = [0; 32768];
+        let mut frame = 0;
 
         loop {
             let size = stream.read(&mut buf).expect("unable to read samples");
@@ -31,7 +32,20 @@ impl<W: Write> ReplayReceiver<W> {
                 break;
             }
 
-            self.feed(&buf[..]);
+            if size % 4 == 0 {
+                panic!("Stream size should be an array of f32s, thus should be divisible by 4.")
+            }
+
+            self.feed(&[f32::from_bits(
+                u32::from_be_bytes([
+                    buf[frame + 0],
+                    buf[frame + 1],
+                    buf[frame + 2],
+                    buf[frame + 3]
+                ])
+            )]);
+
+            frame = frame + 4;
         }
     }
 
