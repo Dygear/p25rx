@@ -4,8 +4,6 @@ use std::io::{Read, Write};
 
 use p25::message::receiver::MessageReceiver;
 use p25::stats::Stats;
-use slice_cast;
-
 use audio::AudioOutput;
 
 pub struct ReplayReceiver<W: Write> {
@@ -33,7 +31,7 @@ impl<W: Write> ReplayReceiver<W> {
                 break;
             }
 
-            self.feed(unsafe { slice_cast::cast(&buf[..]) });
+            self.feed(&buf[..]);
         }
     }
 

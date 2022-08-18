@@ -8,7 +8,6 @@ use imbe::decode::ImbeDecoder;
 use imbe::frame::ReceivedFrame;
 use slice_mip::MapInPlace;
 use p25::voice::frame::VoiceFrame;
-use slice_cast;
 
 /// Messages for `AudioTask`.
 pub enum AudioEvent {
@@ -81,9 +80,8 @@ impl<W: Write> AudioOutput<W> {
         // Reduce volume to a generally sane level.
         samples.map_in_place(|&s| s / 8192.0);
 
-        self.stream.write_all(unsafe {
-            slice_cast::cast(&samples[..])
-        }).expect("unable to write audio samples");
+        // Write slice to file.
+        self.stream.write_all(&samples[..]).expect("unable to write audio samples");
     }
 
     /// Flush the wrapped stream.

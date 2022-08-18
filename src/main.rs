@@ -29,7 +29,6 @@ extern crate prctl;
 extern crate rtlsdr_iq;
 extern crate rtlsdr_mt;
 extern crate serde;
-extern crate slice_cast;
 extern crate slice_mip;
 extern crate static_decimate;
 extern crate static_fir;
@@ -277,9 +276,7 @@ fn main() {
 
             if let Some(mut f) = samples_file {
                 recv.run(|samples| {
-                    f.write_all(unsafe {
-                        slice_cast::cast(samples)
-                    }).expect("unable to write baseband");
+                    f.write_all(samples).expect("unable to write baseband");
                 })
             } else {
                 recv.run(|_| {})
