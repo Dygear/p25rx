@@ -214,8 +214,8 @@ dependencies = [
 
 [[package]]
 name = "imbe"
-version = "1.0.0"
-source = "git+https://github.com/kchmck/imbe.rs#2e17f5a9eb2cd69fa1e243f5b16b1321172ac7ba"
+version = "1.0.1"
+source = "git+https://github.com/Dygear/imbe.rs#f329e9e8e9e138a235db4a394bfeabab9c110500"
 dependencies = [
  "arrayvec",
  "collect_slice",
@@ -502,7 +502,7 @@ checksum = "4eae0151b9dacf24fcc170d9995e511669a082856a91f958a2fe380bfab3fb22"
 [[package]]
 name = "p25"
 version = "1.0.0"
-source = "git+https://github.com/kchmck/p25.rs#a96c564bd05b8af3f701dacf8a554e5723035a03"
+source = "git+https://github.com/Dygear/p25.rs#f6467a0da33428bf333e6d3ddeec78a0901322c6"
 dependencies = [
  "binfield_matrix",
  "cai_cyclic",
@@ -512,16 +512,16 @@ dependencies = [
  "num-traits 0.2.15",
  "serde",
  "serde_derive",
- "static_fir 0.2.0",
+ "static_fir",
 ]
 
 [[package]]
 name = "p25_filts"
-version = "1.0.0"
-source = "git+https://github.com/kchmck/p25_filts.rs#0d34fc28b57aa3ce9c2131bfc1234fc08cf4d01e"
+version = "1.0.1"
+source = "git+https://github.com/Dygear/p25_filts.rs#3ec16cc2ff74250843cefc96c12215469b79407a"
 dependencies = [
  "num",
- "static_fir 0.2.0",
+ "static_fir",
 ]
 
 [[package]]
@@ -556,7 +556,7 @@ dependencies = [
  "serde_json",
  "slice_mip",
  "static_decimate",
- "static_fir 1.0.1",
+ "static_fir",
  "throttle",
  "uhttp_chunked_write",
  "uhttp_json_api",
@@ -565,7 +565,7 @@ dependencies = [
  "uhttp_sse",
  "uhttp_status",
  "uhttp_uri",
- "uhttp_version 0.6.1",
+ "uhttp_version",
 ]
 
 [[package]]
@@ -767,18 +767,12 @@ checksum = "1f2a6116c69cb600b42de3cdd836466e24a7d75229cc3fba5eb0da898bca5592"
 
 [[package]]
 name = "static_decimate"
-version = "1.0.0"
-source = "git+https://github.com/kchmck/static_decimate.rs#e9e00a0e4daf18fb262fa8496b81bca5c7c2ec6d"
+version = "1.0.1"
+source = "git+https://github.com/Dygear/static_decimate.rs#dd3f364ea7f16cd77da4fe89c0e902b7d43017d2"
 dependencies = [
  "num",
- "static_fir 0.2.0",
+ "static_fir",
 ]
-
-[[package]]
-name = "static_fir"
-version = "0.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "65b8741dc43d307b01659f424d3c11376773096c3fa96aecbc3bf38dae6b0fc8"
 
 [[package]]
 name = "static_fir"
@@ -875,14 +869,12 @@ checksum = "0aedb877ea6a22312470262d8ecb665227e6c84f619a9997d8435987f206dace"
 [[package]]
 name = "uhttp_content_encoding"
 version = "0.5.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1564f1345214ec826f8029ecd3841b56b12f7a40bdf34a08a05f14480a1b2cc1"
+source = "git+https://github.com/Dygear/uhttp_content_encoding.rs#3af0352379c2c8d6991f7dd1982faa45bcf777b8"
 
 [[package]]
 name = "uhttp_json_api"
-version = "0.6.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d5dea75f9d6cb9b8b04e4d8d44ee220edcf26a7c2b08ed02c933aa05fb41468b"
+version = "0.6.3"
+source = "git+https://github.com/Dygear/uhttp_json_api.rs#6120d2009eb0ab041fe5e879ccc251b8ace3b552"
 dependencies = [
  "serde",
  "serde_json",
@@ -897,14 +889,13 @@ dependencies = [
  "uhttp_status",
  "uhttp_transfer_encoding",
  "uhttp_uri",
- "uhttp_version 0.6.0",
+ "uhttp_version",
 ]
 
 [[package]]
 name = "uhttp_media_type"
-version = "0.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fe6f9017612fb9272741ef8ba50943b82708b13c9ea38ab5d31fc35427e5043a"
+version = "0.5.1"
+source = "git+https://github.com/Dygear/uhttp_media_type.rs#32799e0d406d169234a535225905756b1ac33988"
 dependencies = [
  "memchr 1.0.2",
 ]
@@ -917,9 +908,8 @@ checksum = "56cfb4dfd2f3d866b99f1b7bd41916197557aa560b951f5d469e1a756a186d4c"
 
 [[package]]
 name = "uhttp_request"
-version = "0.5.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fae19366cc9626c7d4c27173b7073cc943f3dcfbb5bd8beae3c442a25eab1283"
+version = "0.5.2"
+source = "git+https://github.com/Dygear/uhttp_request.rs#54fa2c8e270f02678b90a62e5ff94e0fa5942c01"
 dependencies = [
  "memchr 1.0.2",
 ]
@@ -950,21 +940,14 @@ checksum = "cb502d735c8f75539b218e85c425f0d474a2247020984b1154db531811b68057"
 
 [[package]]
 name = "uhttp_transfer_encoding"
-version = "0.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "86f268b2fafe041461e9a6169f228c0f97d30d111eb6131591fadabc46f4dc7f"
+version = "0.5.1"
+source = "git+http://github.com/Dygear/uhttp_transfer_encoding.rs#69f798b3825531546729aca8c845551d39a00ccd"
 
 [[package]]
 name = "uhttp_uri"
 version = "0.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b9b600e6da808f63a440874d633b22fa04abc9c3b08212ee7292512aec62805b"
-
-[[package]]
-name = "uhttp_version"
-version = "0.6.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b53ef3b22c44a923b4a8b9b73d34a59866c1fbe9b799e7469184073cb94167db"
 
 [[package]]
 name = "uhttp_version"
