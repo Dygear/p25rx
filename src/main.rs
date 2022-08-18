@@ -12,7 +12,6 @@ extern crate chan;
 extern crate chrono;
 extern crate clap;
 extern crate collect_slice;
-extern crate crossbeam;
 extern crate demod_fm;
 extern crate env_logger;
 extern crate fnv;
@@ -249,7 +248,7 @@ fn main() {
         tx_ctl.clone(), tx_audio.clone(), freq, hopping, policy, talkgroups);
     let mut audio = AudioTask::new(audio_out(), rx_audio);
 
-    crossbeam::scope(|scope| {
+    std::thread::scope(|scope| {
         scope.spawn(move || {
             hub.run();
         });
