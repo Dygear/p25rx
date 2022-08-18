@@ -3,7 +3,7 @@
 use std::io::{Write, BufWriter};
 use std;
 
-use chrono::UTC;
+use chrono::Utc;
 use serde::Serialize;
 use serde_json;
 use uhttp_chunked_write::ChunkedWrite;
@@ -19,7 +19,7 @@ pub fn send_status<W: Write>(s: W, st: StatusCode) -> std::io::Result<()> {
 /// Write common response headers into the given sink.
 pub fn send_head<W: Write>(h: &mut HeaderLines<W>, st: StatusCode) -> std::io::Result<()> {
     write!(h.line(), "{} {}", HttpVersion::from_parts(1, 1), st)?;
-    write!(h.line(), "Date: {}", UTC::now().format("%a, %d %b %Y %T %Z"))?;
+    write!(h.line(), "Date: {}", Utc::now().format("%a, %d %b %Y %T %Z"))?;
     write!(h.line(), "Access-Control-Allow-Origin: *")?;
 
     Ok(())

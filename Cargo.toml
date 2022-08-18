@@ -7,7 +7,7 @@ license = "GPLv2"
 [dependencies]
 
 arrayvec = "0.7.2"
-chrono = "0.2.25"
+chrono = "0.4.22"
 clap = "2.12.1"
 collect_slice = "1.2.0"
 demod_fm = {version = "1.0.1", git = "https://github.com/Dygear/demod_fm.rs"}
