@@ -8,7 +8,6 @@ extern crate serde_json;
 extern crate log;
 
 extern crate arrayvec;
-extern crate chan;
 extern crate chrono;
 extern crate clap;
 extern crate collect_slice;

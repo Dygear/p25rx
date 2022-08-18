@@ -120,7 +120,7 @@ pub struct HubTask {
     /// Async event loop.
     events: Poll,
     /// Streams subscribed to receive events.
-    streamers: ArrayVec<[TcpStream; 4]>,
+    streamers: ArrayVec<TcpStream, 4>,
     /// Channel for receiving events.
     chan: Receiver<HubEvent>,
     /// Channel for communication with RecvTask.
@@ -220,7 +220,7 @@ impl HubTask {
         }
 
         // Holds streamers that are still alive.
-        let mut keep = ArrayVec::<[TcpStream; 4]>::new();
+        let mut keep = ArrayVec::<TcpStream, 4>::new();
 
         loop {
             let mut s = match self.streamers.pop() {
