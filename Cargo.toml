@@ -1,6 +1,6 @@
 [package]
 name = "p25rx"
-version = "1.0.1"
+version = "1.0.2"
 authors = ["Mick Koch <mick@kochm.co>", "Mark Tomlin <Dygear@gmail.com>"]
 license = "GPLv2"
 
@@ -20,7 +20,7 @@ log = "0.4.1"
 mio = "0.6.12"
 mio-more = "0.1.0"
 moving_avg = "0.1.0"
-num = "0.1.34"
+num = "0.4.0"
 prctl = "1.0.0"
 rand = "0.3.13"
 rtlsdr_iq = "0.1.0"
@@ -38,10 +38,10 @@ uhttp_status = "0.10.0"
 uhttp_uri = "0.5.1"
 uhttp_version = {version = "0.6.1", git = "https://github.com/Dygear/uhttp_version.rs.git"}
 
-static_fir = {version = "1.0.1",  git = "https://github.com/Dygear/static_fir.rs" }
+static_fir = {version = "1.0.2",  git = "https://github.com/Dygear/static_fir.rs" }
 imbe = {version = "1.0.1", git = "https://github.com/Dygear/imbe.rs"}
-p25 = {version = "1.0.0", git = "https://github.com/Dygear/p25.rs", features = ["ser"]}
-p25_filts = {version = "1.0.1", git = "https://github.com/Dygear/p25_filts.rs"}
+p25 = {version = "1.0.3", git = "https://github.com/Dygear/p25.rs", features = ["ser"]}
+p25_filts = {version = "1.0.2", git = "https://github.com/Dygear/p25_filts.rs"}
 pool = {version = "0.1.3", git = "https://github.com/kchmck/pool"}
 static_decimate = {version = "1.0.1", git = "https://github.com/Dygear/static_decimate.rs"}
 throttle = {version = "1.0.0", git = "https://github.com/kchmck/throttle.rs"}

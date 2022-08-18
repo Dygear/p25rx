@@ -136,10 +136,8 @@ impl HubTask {
         let socket = TcpListener::bind(addr)?;
         let events = Poll::new()?;
 
-        try!(events.register(&socket, HubToken::Conns.into(), Ready::readable(),
-            PollOpt::edge()));
-        try!(events.register(&chan, HubToken::Events.into(), Ready::readable(),
-            PollOpt::edge()));
+        events.register(&socket, HubToken::Conns.into(), Ready::readable(), PollOpt::edge())?;
+        events.register(&chan, HubToken::Events.into(), Ready::readable(), PollOpt::edge())?;
 
         Ok(HubTask {
             state: State::default(),
@@ -324,8 +322,8 @@ impl HubTask {
     fn start_stream(&self, s: &mut TcpStream) -> std::io::Result<()> {
         let mut h = HeaderLines::new(s);
 
-        try!(http::send_head(&mut h, StatusCode::Ok));
-        try!(write!(h.line(), "Content-Type: text/event-stream"));
+        http::send_head(&mut h, StatusCode::Ok)?;
+        write!(h.line(), "Content-Type: text/event-stream")?;
 
         Ok(())
     }
@@ -412,11 +410,11 @@ impl HubTask {
                 None => continue,
             };
 
-            try!(SerdeEvent::new("altControl", json!({
+            SerdeEvent::new("altControl", json!({
                 "rfss": f.rfss(),
                 "site": f.site(),
                 "freq": freq,
-            })).write(&mut s));
+            })).write(&mut s)?;
         }
 
         Ok(())

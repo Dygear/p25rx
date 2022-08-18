@@ -18,9 +18,9 @@ pub fn send_status<W: Write>(s: W, st: StatusCode) -> std::io::Result<()> {
 
 /// Write common response headers into the given sink.
 pub fn send_head<W: Write>(h: &mut HeaderLines<W>, st: StatusCode) -> std::io::Result<()> {
-    try!(write!(h.line(), "{} {}", HttpVersion::from_parts(1, 1), st));
-    try!(write!(h.line(), "Date: {}", UTC::now().format("%a, %d %b %Y %T %Z")));
-    try!(write!(h.line(), "Access-Control-Allow-Origin: *"));
+    write!(h.line(), "{} {}", HttpVersion::from_parts(1, 1), st)?;
+    write!(h.line(), "Date: {}", UTC::now().format("%a, %d %b %Y %T %Z"))?;
+    write!(h.line(), "Access-Control-Allow-Origin: *")?;
 
     Ok(())
 }
@@ -29,9 +29,9 @@ pub fn send_head<W: Write>(h: &mut HeaderLines<W>, st: StatusCode) -> std::io::R
 pub fn send_json<W: Write, S: Serialize>(mut s: W, msg: S) -> std::io::Result<()> {
     {
         let mut h = HeaderLines::new(&mut s);
-        try!(send_head(&mut h, StatusCode::Ok));
-        try!(write!(h.line(), "Content-Type: application/json"));
-        try!(write!(h.line(), "Transfer-Encoding: chunked"));
+        send_head(&mut h, StatusCode::Ok)?;
+        write!(h.line(), "Content-Type: application/json")?;
+        write!(h.line(), "Transfer-Encoding: chunked")?;
     }
 
     let mut body = BufWriter::new(ChunkedWrite::new(s));

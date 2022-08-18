@@ -14,7 +14,7 @@ use p25_filts::{DecimFir, BandpassFir};
 use pool::{Pool, Checkout};
 use rtlsdr_iq::IQ;
 use static_decimate::Decimator;
-use static_fir::FirFilter;
+use static_fir::FIRFilter;
 use throttle::Throttler;
 
 use hub::HubEvent;
@@ -26,7 +26,7 @@ pub struct DemodTask {
     /// Decimates I/Q signal.
     decim: Decimator<DecimFir>,
     /// Channel-select lowpass filter.
-    bandpass: FirFilter<BandpassFir>,
+    bandpass: FIRFilter<BandpassFir>,
     /// Moving average filter.
     avg: MovingAverage<f32>,
     /// Demodulates FM signal.
@@ -48,7 +48,7 @@ impl DemodTask {
     {
         DemodTask {
             decim: Decimator::new(5),
-            bandpass: FirFilter::new(),
+            bandpass: FIRFilter::new(),
             avg: MovingAverage::new(10),
             // Assume a 5kHz frequency deviation.
             demod: FmDemod::new(5000, BASEBAND_SAMPLE_RATE),
