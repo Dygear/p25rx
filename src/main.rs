@@ -268,7 +268,9 @@ fn main() {
         scope.spawn(move || {
             if let Some(mut f) = samples_file {
                 recv.run(|samples| {
-                    f.write_all(samples).expect("unable to write baseband");
+                    for i in 0..samples.len() {
+                        f.write_all(&samples[i].to_le_bytes()).expect("unable to write baseband");
+                    }
                 })
             } else {
                 recv.run(|_| {})
