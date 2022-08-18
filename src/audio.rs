@@ -81,7 +81,9 @@ impl<W: Write> AudioOutput<W> {
         samples.map_in_place(|&s| s / 8192.0);
 
         // Write slice to file.
-        self.stream.write_all(&samples[..]).expect("unable to write audio samples");
+        for i in 0..SAMPLES_PER_FRAME {
+            self.stream.write_all(&samples[i].to_le_bytes()).expect("unable to write audio samples");
+        }
     }
 
     /// Flush the wrapped stream.
