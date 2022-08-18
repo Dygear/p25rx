@@ -25,7 +25,6 @@ extern crate num;
 extern crate p25;
 extern crate p25_filts;
 extern crate pool;
-extern crate prctl;
 extern crate rtlsdr_iq;
 extern crate rtlsdr_mt;
 extern crate serde;
@@ -252,28 +251,22 @@ fn main() {
 
     crossbeam::scope(|scope| {
         scope.spawn(move || {
-            prctl::set_name("hub").unwrap();
             hub.run();
         });
 
         scope.spawn(move || {
-            prctl::set_name("controller").unwrap();
             control.run()
         });
 
         scope.spawn(move || {
-            prctl::set_name("reader").unwrap();
             read.run(reader);
         });
 
         scope.spawn(move || {
-            prctl::set_name("demod").unwrap();
             demod.run();
         });
 
         scope.spawn(move || {
-            prctl::set_name("receiver").unwrap();
-
             if let Some(mut f) = samples_file {
                 recv.run(|samples| {
                     f.write_all(samples).expect("unable to write baseband");
@@ -284,7 +277,6 @@ fn main() {
         });
 
         scope.spawn(move || {
-            prctl::set_name("audio").unwrap();
             audio.run();
         });
     });
